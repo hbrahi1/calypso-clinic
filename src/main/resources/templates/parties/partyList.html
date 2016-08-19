@@ -43,7 +43,7 @@
                 <tbody>
                     <tr th:each="party : ${parties}">
                         <td th:text="${party.id}">1</td>
-                        <td dt:xml="|${party.partyName}|"><a href="ownerDetails.html" th:href="@{|/parties/${party.id}|}" th:text="|${party.partyName}|">Mary Smith</a></td>
+                        <td dt:xml="|${party.partyName}|"><a href="partyDetails.html" th:href="@{|/parties/${party.id}|}" th:text="|${party.partyName}|">Mary Smith</a></td>
                         <td th:text="${party.partyName}">45, Oxford Street</td>
                         <td th:text="${party.cityName}">Cambridge</td>
                         <td th:text="${party.partyName}">555-555-555</td>
@@ -67,8 +67,8 @@
                 </div>
 
                 <div class="form-actions col-md-offset-3 col-sm-offset-2 pull-right">
-                    <a th:href="@{'/parties/new'}" href="partyForm.html" class="btn btn-success">Add New Party</a>
-                    <a th:href="@{'/parties/find'}" href="findParties.html" class="btn btn-info">Back to Search</a>
+                    <a th:href="@{'/parties/new'}" href="partyForm.html" class="btn btn-success" th:text="#{action.add}">#ADD#</a>
+                    <a th:href="@{'/parties/find'}" href="findParties.html" class="btn btn-info" th:text="#{action.back}">#BACK#</a>
                 </div>
             </div>
         </div>

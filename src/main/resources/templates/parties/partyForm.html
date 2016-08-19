@@ -17,7 +17,7 @@
 
             <div role="alert" th:if="${statusMessage}" th:class="'alert ' + ${statusMessageClass}?: 'alert-info'" th:text="${statusMessage}" />
 
-            <form th:object="${party}" method="post" action="ownerDetails.html" th:action="@{${#httpServletRequest.servletPath}}"
+            <form th:object="${party}" method="post" action="partyDetails.html" th:action="@{${#httpServletRequest.servletPath}}"
                 class="form-horizontal" id="party-form">
                 <div th:replace="fragments/hiddenErrors :: hiddenErrors">REPLACE BEFORE COMMITTING</div>
 
@@ -52,9 +52,9 @@
                         <td></td>
                         <td>
                             <div class="form-actions pull-right">
-                                <input type="submit" class="btn btn-success" th:value="(${party['new']} ? 'Add' : 'Update') + ' Owner'" />
-                                <input type="button" th:if="${party.id}" th:onclick="'window.location.href=\'' + @{|/owners/${party.id}|} + '\''" class="btn btn-danger" value="Cancel" />
-                                <input type="button" th:unless="${party.id}" th:onclick="'window.location.href=\'' + @{|/owners/find.html|} + '\''" class="btn btn-danger" value="Cancel" />
+                                <input type="submit" class="btn btn-success" th:value="(${party['new']} ? 'Add' : 'Update') + ' Party'" />
+                                <input type="button" th:if="${party.id}" th:onclick="'window.location.href=\'' + @{|/parties/${party.id}|} + '\''" class="btn btn-danger" value="Cancel" />
+                                <input type="button" th:unless="${party.id}" th:onclick="'window.location.href=\'' + @{|/parties/find.html|} + '\''" class="btn btn-danger" value="Cancel" />
                             </div>
                         </td>
                     </tr>

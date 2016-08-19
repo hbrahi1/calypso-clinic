@@ -33,8 +33,8 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.calypso.model.Party;
+import com.calypso.model.Party;
 import com.calypso.service.ClinicService;
-
 
 @Controller
 @SessionAttributes("party")
@@ -56,36 +56,40 @@ public class PartyController
 		dataBinder.setDisallowedFields("id");
 	}
 
+	//********************** FIND
    @RequestMapping(value = "/find", method = RequestMethod.GET)
-   public String initFindForm(Model model) {
+   public String initFind(Model model) {
        model.addAttribute("party", new Party());
        return "parties/findParties";
    }
 	
+   //********************** LIST
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String getAllParties(Model model)
+	public String processList(Model model)
 	{
 		Collection<Party> parties = this.clinicService.findParties();
 		model.addAttribute("parties", parties);
 		return "parties/partyList";
 	}
 	
+	//********************** VIEW
    @RequestMapping("/{partyId}")
-   public ModelAndView showParty(@PathVariable("partyId") int partyId) {
+   public ModelAndView processView(@PathVariable("partyId") int partyId) {
        ModelAndView mav = new ModelAndView("parties/partyDetails");
        mav.addObject(this.clinicService.findPartyById(partyId));
        return mav;
    }
  
+   //********************** ADD 
    @RequestMapping(value = "/new", method = RequestMethod.GET)
-   public String initCreationForm(Model model) {
+   public String initCreation(Model model) {
        Party party = new Party();
        model.addAttribute(party);
        return "parties/partyForm";
    }
    
    @RequestMapping(value = "/new", method = RequestMethod.POST)
-   public String processCreationForm(@Valid Party party, BindingResult result, SessionStatus status) {
+   public String processCreation(@Valid Party party, BindingResult result, SessionStatus status) {
        if (result.hasErrors()) {
            return "parties/partyForm";
        } else {
@@ -95,6 +99,36 @@ public class PartyController
        }
    }
 
+   //**************************** UPDATE 
+   @RequestMapping(value = "/{partyId}/edit", method = RequestMethod.GET)
+   public String initUpdate(@PathVariable("partyId") int partyId, Model model) {
+       Party party = this.clinicService.findPartyById(partyId);
+       model.addAttribute(party);
+       return "parties/partyForm";
+   }
 
+   @RequestMapping(value = "/{partyId}/edit", method = RequestMethod.POST)
+   public String processUpdate(@Valid Party party, BindingResult result, SessionStatus status) {
+       if (result.hasErrors()) {
+           return "parties/partyForm";
+       } else {
+           this.clinicService.saveParty(party);
+           status.setComplete();
+           return "redirect:/parties/{partyId}";
+       }
+   }
+
+	//********************** VIEW
+   @RequestMapping(value="/{partyId}/delete", method = RequestMethod.DELETE)
+   public String processDelete(@PathVariable("partyId") int partyId) {
+   	 Party party = this.clinicService.findPartyById(partyId);
+   	 
+   	 if (party != null) {
+   		this.clinicService.deleteParty(party);
+   	 }
+   	 
+   	 return "redirect:/parties/list";
+       
+   }
 
 }

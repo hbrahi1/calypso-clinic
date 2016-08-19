@@ -23,11 +23,14 @@ import org.springframework.data.repository.Repository;
 import com.calypso.model.Party;
 
 
-public interface PartyRepository extends Repository<Party, Long> {
+public interface PartyRepository extends Repository<Party, Long>
+{
 
 	Party findById(Long id) throws DataAccessException;
 
-    void save(Party party) throws DataAccessException;
+	void save(Party party) throws DataAccessException;
+
+	void delete(Party party) throws DataAccessException;
 
 	Collection<Party> findAll();
 

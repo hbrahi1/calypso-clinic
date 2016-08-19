@@ -63,5 +63,6 @@ public interface ClinicService {
     public Party findPartyById(long id) throws DataAccessException;
     public void saveParty(Party party) throws DataAccessException;
     public Collection<Party> findParties() throws DataAccessException;
+    public void deleteParty(Party party) throws DataAccessException;
 
 }

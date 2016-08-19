@@ -184,4 +184,11 @@ public class ClinicServiceImpl implements ClinicService {
        return partyRepository.findAll();
    }
 
+	@Override
+	@Transactional
+	public void deleteParty(Party party) throws DataAccessException
+	{
+		partyRepository.delete(party);
+	}
+
 }

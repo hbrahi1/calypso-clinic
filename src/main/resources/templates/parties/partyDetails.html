@@ -38,8 +38,12 @@
                     <td></td>
                     <td>
                         <div class="form-actions pull-right">
-                            <input type="button" class="btn btn-info" value="Edit Owner" onclick="window.location.href='ownerForm.html'" th:onclick="'window.location.href=\'' + @{|${party.id}/edit.html|} + '\''" />
-                            <input type="button" class="btn btn-danger" value="Back to List" onclick="window.location.href='ownersList.html'" th:onclick="'window.location.href=\'' + @{|/parties/list.html?lastName=${session.searchLastName}|} + '\''" />
+	                        <form action="#" th:action="@{|/parties/${party.id}/delete|}" th:method="delete" >
+							  <input type="hidden" name="_method" value="delete" />
+							  <button type="submit" class="btn btn-danger" th:text="#{action.delete}"/>
+							</form>
+                            <input type="button" class="btn btn-info"   th:value="#{action.edit}"   th:onclick="'window.location.href=\'' + @{|${party.id}/edit.html|} + '\''" />
+                            <input type="button" class="btn btn-danger" th:value="#{action.back}"   th:onclick="'window.location.href=\'' + @{|/parties/list.html?lastName=${session.searchLastName}|} + '\''" />
                         </div>
                     </td>
                 </tr>
@@ -70,7 +74,7 @@
                             </table>
                         </td>
                         <td>
-                            <a class="btn btn-sm btn-info pull-left" href="../pets/petForm.html" th:href="@{|/parties/${party.id}/pets/${contact.id}/edit|}">Edit Pet</a>
+                            <a class="btn btn-sm btn-info pull-left" href="../pets/petForm.html" th:href="@{|/parties/${party.id}/pets/${contact.id}/edit|}" th:text="#{action.edit}">#Edit#</a>
                         </td>
                         <td>
                          </td>
