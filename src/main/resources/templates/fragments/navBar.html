@@ -18,9 +18,9 @@
                     <li sec:authorize="!isAnonymous()"><a href="../owners/find.html" th:href="@{/owners/find.html}"><span
                             class="glyphicon glyphicon-search"></span> Find Owners</a></li>
                     <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="../parties/find.html" th:href="@{/parties/find.html}"><span
-                            class="glyphicon glyphicon-search"></span> #Parties#</a></li>                    
-                    <li sec:authorize="!isAnonymous()"><a href="../vets/vetList.html" th:href="@{/vets/list.html}"><span class="glyphicon glyphicon-th-list"></span>
-                            Veterinarians</a></li>
+                            class="glyphicon glyphicon-search"></span> #Parties#</a></li>
+                    <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="../docs/uploadForm.html" th:href="@{/upload}"><span
+                            class="glyphicon glyphicon-search"></span> #Docs#</a></li>                     
                     <li sec:authorize="!isAnonymous()"><a href="../exception.html" th:href="@{/oups.html}"
                         title="trigger a RuntimeException to see how it is handled"><span class="glyphicon glyphicon-warning-sign"></span>
                             Error</a></li>

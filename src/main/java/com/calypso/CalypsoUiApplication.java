@@ -15,13 +15,22 @@
  */
 package com.calypso;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.actuate.system.ApplicationPidFileWriter;
 import org.springframework.boot.actuate.system.EmbeddedServerPortFileWriter;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.FileSystemUtils;
+
+import com.calypso.web.FileUploadController;
 
 @ComponentScan
 @Configuration
@@ -34,4 +43,13 @@ public class CalypsoUiApplication {
         springApplication.addListeners(new ApplicationPidFileWriter(), new EmbeddedServerPortFileWriter());
         springApplication.run(args);
     }
+    
+    @Bean
+	CommandLineRunner init() {
+		return (args) -> {
+            FileSystemUtils.deleteRecursively(new File(FileUploadController.ROOT));
+
+            Files.createDirectory(Paths.get(FileUploadController.ROOT));
+		};
+	}
 }

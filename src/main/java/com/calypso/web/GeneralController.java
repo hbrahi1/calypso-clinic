@@ -29,11 +29,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-/**
- * Controller that handles the home page and exceptional cases.
- *
- * @author Arnaldo Piccinelli
- */
 @Controller
 @ControllerAdvice
 public class GeneralController {

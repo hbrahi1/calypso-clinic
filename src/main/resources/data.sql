@@ -3,51 +3,27 @@
 ------------------------------------------------------------
 
 insert into users (id, email, username, password, name, enabled, account_expired, account_locked, credentials_expired) values (1, 'admin@aol.com', 'admin', '$2a$10$YViIt3pVQU.YJ3bfZDNLPukph6yBWHX6KVScxFvY1lcGGpHQgLi9W', 'Admin', true, false, false, false);
-insert into users (id, email, username, password, name, enabled, account_expired, account_locked, credentials_expired) values (2, 'user@aol.com', 'user', '$2a$10$F2a2W8RtbD99xXd9xtwjbuI4zjSYe04kS.s0FyvQcAIDJfh/6jjLW', 'User', true, false, false, false);
-insert into users (id, email, username, password, name, enabled, account_expired, account_locked, credentials_expired) values (3, 'keith@aol.com', 'keith', '$2a$10$5XXFOBdlDGnKl4fUUWGSk.6Ldn.9x7ipMpvCXdwWQ.5CjpuV5JwJC', 'Keith', true, false, false, false);
-insert into users (id, email, username, password, name, enabled, account_expired, account_locked, credentials_expired) values (4, 'erwin@aol.com', 'erwin', '$2a$10$fu75b5J3fqkpqF.Mz7o7weKSUb5nOL3BcyVdxTXV87TtG0qA6Hw8.', 'Erwin', true, false, false, false);
-insert into users (id, email, username, password, name, enabled, account_expired, account_locked, credentials_expired) values (5, 'jeremy@aol.com', 'jeremy', '$2a$10$DDuuuLbcfikHympYff7RA.Uqg1CJO.F0kIwIDF7.nyyRLv..sirCm', 'Jeremy', true, false, false, false);
-insert into users (id, email, username, password, name, enabled, account_expired, account_locked, credentials_expired) values (6, 'scott@aol.com', 'scott', '$2a$10$F9WlZNB83SfM07Wk/sNfTuzbnAmQ5rAx9r1PrEFdlEOP23Sbkga/O', 'Scott', true, false, false, false);
+insert into users (id, email, username, password, name, enabled, account_expired, account_locked, credentials_expired) values (2, 'user@aol.com',  'user',  '$2a$10$YViIt3pVQU.YJ3bfZDNLPukph6yBWHX6KVScxFvY1lcGGpHQgLi9W', 'User', true, false, false, false);
 
 ------------------------------------------------------------
 -- Authorities
 ------------------------------------------------------------
 
 insert into authorities (id, authority) values (1, 'ROLE_ADMIN');
-insert into authorities (id, authority) values (2, 'ROLE_USER');
+insert into authorities (id, authority) values (2, 'ROLE_FINA');
 
 ------------------------------------------------------------
 -- User_Authorities
 ------------------------------------------------------------
 
-insert into user_authorities (user_id, authority_id) values (1, 2);
 insert into user_authorities (user_id, authority_id) values (1, 1);
+insert into user_authorities (user_id, authority_id) values (1, 2);
 insert into user_authorities (user_id, authority_id) values (2, 2);
-insert into user_authorities (user_id, authority_id) values (3, 2);
-insert into user_authorities (user_id, authority_id) values (4, 2);
-insert into user_authorities (user_id, authority_id) values (5, 2);
-insert into user_authorities (user_id, authority_id) values (6, 2);
+
 
 ------------------------------------------------------------
 -- PetClinic
 ------------------------------------------------------------
-
-insert into vets(id, first_name, last_name) values (1, 'James', 'Carter');
-insert into vets(id, first_name, last_name) values (2, 'Helen', 'Leary');
-insert into vets(id, first_name, last_name) values (3, 'Linda', 'Douglas');
-insert into vets(id, first_name, last_name) values (4, 'Rafael', 'Ortega');
-insert into vets(id, first_name, last_name) values (5, 'Henry', 'Stevens');
-insert into vets(id, first_name, last_name) values (6, 'Sharon', 'Jenkins');
-
-insert into specialties(id, name) values (1, 'radiology');
-insert into specialties(id, name) values (2, 'surgery');
-insert into specialties(id, name) values (3, 'dentistry');
-
-insert into vet_specialties(vet_id, specialty_id) values (2, 1);
-insert into vet_specialties(vet_id, specialty_id) values (3, 2);
-insert into vet_specialties(vet_id, specialty_id) values (3, 3);
-insert into vet_specialties(vet_id, specialty_id) values (4, 2);
-insert into vet_specialties(vet_id, specialty_id) values (5, 1);
 
 insert into pet_types(id, name) values (1, 'cat');
 insert into pet_types(id, name) values (2, 'dog');

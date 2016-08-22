@@ -33,7 +33,7 @@
                     <tr th:classappend="${#fields.hasErrors('firstName')} ? 'has-error'">
                         <td>
                             <div class="control-group" th:classappend="${#fields.hasErrors('firstName')} ? 'error'">
-                                <label class="control-label">#Name#</label>
+                                <label th:text="#{common.name}" class="control-label">#Name#</label>
                             </div>
                         </td>
                         <td>

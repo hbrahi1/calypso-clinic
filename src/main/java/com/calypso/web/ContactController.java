@@ -86,5 +86,17 @@ public class ContactController {
             return "redirect:/parties/{partyId}";
         }
     }
+    
+    @RequestMapping(value="/parties/{partyId}/contacts/{contactId}/delete", method = RequestMethod.DELETE)
+    public String processDelete(@PathVariable("partyId") int partyId, @PathVariable("contactId") int contactId) {
+   	 Contact contact = this.clinicService.findContactById(contactId);
+    	 
+    	 if (contact != null) {
+    		this.clinicService.deleteContact(contact);
+    	 }
+    	 
+    	 return "redirect:/parties/{partyId}";
+        
+    }
 
 }

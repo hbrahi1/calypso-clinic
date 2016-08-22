@@ -18,6 +18,7 @@ package com.calypso.service;
 import java.util.Collection;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.security.access.annotation.Secured;
 
 import com.calypso.message.Message;
 import com.calypso.model.Contact;
@@ -27,7 +28,6 @@ import com.calypso.model.Pet;
 import com.calypso.model.PetType;
 import com.calypso.model.User;
 import com.calypso.model.UserProfile;
-import com.calypso.model.Vet;
 import com.calypso.model.Visit;
 
 public interface ClinicService {
@@ -52,9 +52,6 @@ public interface ClinicService {
     // Visit
     public void saveVisit(Visit visit) throws DataAccessException;
 
-    // Vet
-    public Collection<Vet> findVets() throws DataAccessException;
-
     // Message
     public Collection<Message> findMessages() throws DataAccessException;
     public Message saveMessage(Message message) throws DataAccessException;
@@ -63,12 +60,15 @@ public interface ClinicService {
     // Party
     public Party findPartyById(long id) throws DataAccessException;
     public void saveParty(Party party) throws DataAccessException;
+    
+    @Secured("ROLE_ADMIN")
     public Collection<Party> findParties() throws DataAccessException;
     public void deleteParty(Party party) throws DataAccessException;
     
     // Contact
     public void saveContact(Contact contact) throws DataAccessException;
 	 public Contact findContactById(long contactId);
+	 public void deleteContact(Contact contact) throws DataAccessException;
     
 
 }

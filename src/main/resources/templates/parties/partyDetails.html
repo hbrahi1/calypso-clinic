@@ -74,6 +74,10 @@
                         </td>
                         <td>
                             <a class="btn btn-sm btn-info pull-left" href="../contacts/petForm.html" th:href="@{|/parties/${party.id}/contacts/${contact.id}/edit|}" th:text="#{action.edit}">#Edit#</a>
+                            <form action="#" th:action="@{|/parties/${party.id}/contacts/${contact.id}/delete|}" th:method="delete" >
+							  <input type="hidden" name="_method" value="delete" />
+							  <button type="submit" class="btn btn-sm btn-danger" th:text="#{action.delete}"/>
+							</form>
                         </td>
                         <td>
                          </td>

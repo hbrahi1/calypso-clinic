@@ -32,7 +32,6 @@ import com.calypso.model.Pet;
 import com.calypso.model.PetType;
 import com.calypso.model.User;
 import com.calypso.model.UserProfile;
-import com.calypso.model.Vet;
 import com.calypso.model.Visit;
 import com.calypso.repository.ContactRepository;
 import com.calypso.repository.OwnerRepository;
@@ -40,7 +39,6 @@ import com.calypso.repository.PartyRepository;
 import com.calypso.repository.PetRepository;
 import com.calypso.repository.PetTypeRepository;
 import com.calypso.repository.UserRepository;
-import com.calypso.repository.VetRepository;
 import com.calypso.repository.VisitRepository;
 
 @Service("clinicService")
@@ -51,9 +49,6 @@ public class ClinicServiceImpl implements ClinicService {
 
     @Autowired
     private PetTypeRepository petTypeRepository;
-
-    @Autowired
-    private VetRepository vetRepository;
 
     @Autowired
     private OwnerRepository ownerRepository;
@@ -119,13 +114,6 @@ public class ClinicServiceImpl implements ClinicService {
     @Transactional
     public void savePet(Pet pet) throws DataAccessException {
         petRepository.save(pet);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    @Cacheable(value = "vets")
-    public Collection<Vet> findVets() throws DataAccessException {
-        return vetRepository.findAll();
     }
 
     @Override
@@ -209,6 +197,14 @@ public class ClinicServiceImpl implements ClinicService {
 	public Contact findContactById(long contactId)
 	{
 		return contactRepository.findById(contactId);
+	}
+
+	@Override
+	@Transactional
+	public void deleteContact(Contact contact) throws DataAccessException
+	{
+		contactRepository.delete(contact);
+		
 	}
 
 }

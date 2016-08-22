@@ -30,12 +30,6 @@ import com.calypso.model.User;
  * http://static.springsource.org/spring-data/
  * jpa/docs/current/reference/html/jpa
  * .repositories.html#jpa.query-methods.query-creation
- *
- * @author Ken Krebs
- * @author Juergen Hoeller
- * @author Sam Brannen
- * @author Michael Isvy
- * @author Arnaldo Piccinelli
  */
 public interface UserRepository extends Repository<User, Long> {
 

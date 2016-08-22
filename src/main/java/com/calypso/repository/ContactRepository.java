@@ -22,11 +22,13 @@ import org.springframework.data.repository.Repository;
 
 import com.calypso.model.Contact;
 import com.calypso.model.Owner;
+import com.calypso.model.Party;
 import com.calypso.model.Visit;
 
 public interface ContactRepository extends Repository<Contact, Long> {
 
     void save(Contact contact) throws DataAccessException;
     Contact findById(Long contactId);
+	 void delete(Contact contact) throws DataAccessException;
 
 }
