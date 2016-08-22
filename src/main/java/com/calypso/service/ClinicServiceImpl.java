@@ -25,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.calypso.message.Message;
 import com.calypso.message.MessageRepository;
+import com.calypso.model.Contact;
 import com.calypso.model.Owner;
 import com.calypso.model.Party;
 import com.calypso.model.Pet;
@@ -33,6 +34,7 @@ import com.calypso.model.User;
 import com.calypso.model.UserProfile;
 import com.calypso.model.Vet;
 import com.calypso.model.Visit;
+import com.calypso.repository.ContactRepository;
 import com.calypso.repository.OwnerRepository;
 import com.calypso.repository.PartyRepository;
 import com.calypso.repository.PetRepository;
@@ -67,6 +69,9 @@ public class ClinicServiceImpl implements ClinicService {
     
     @Autowired
     private PartyRepository partyRepository;
+    
+    @Autowired
+    private ContactRepository contactRepository;
 
     @Override
     @Transactional(readOnly = true)
@@ -189,6 +194,21 @@ public class ClinicServiceImpl implements ClinicService {
 	public void deleteParty(Party party) throws DataAccessException
 	{
 		partyRepository.delete(party);
+	}
+
+	@Override
+	@Transactional
+	public void saveContact(Contact contact) throws DataAccessException
+	{
+		contactRepository.save(contact);
+		
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Contact findContactById(long contactId)
+	{
+		return contactRepository.findById(contactId);
 	}
 
 }

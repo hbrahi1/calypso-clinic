@@ -15,6 +15,7 @@
  */
 package com.calypso.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -68,6 +69,16 @@ public class Party extends BaseEntity {
 		this.cityName = cityName;
 	}
 
+   public void addContact(Contact contact) {
+      getContactsInternal().add(contact);
+      contact.setParty(this);
+  }
 
+   protected Set<Contact> getContactsInternal() {
+      if (this.contacts == null) {
+          this.contacts = new HashSet<Contact>();
+      }
+      return this.contacts;
+  }
 
 }

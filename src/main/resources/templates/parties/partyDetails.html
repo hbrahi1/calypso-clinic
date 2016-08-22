@@ -42,8 +42,9 @@
 							  <input type="hidden" name="_method" value="delete" />
 							  <button type="submit" class="btn btn-danger" th:text="#{action.delete}"/>
 							</form>
-                            <input type="button" class="btn btn-info"   th:value="#{action.edit}"   th:onclick="'window.location.href=\'' + @{|${party.id}/edit.html|} + '\''" />
-                            <input type="button" class="btn btn-danger" th:value="#{action.back}"   th:onclick="'window.location.href=\'' + @{|/parties/list.html?lastName=${session.searchLastName}|} + '\''" />
+                            <input type="button" class="btn btn-info"   	th:value="#{action.edit}"   th:onclick="'window.location.href=\'' + @{|${party.id}/edit.html|} + '\''" />
+                            <input type="button" class="btn btn-danger" 	th:value="#{action.back}"   th:onclick="'window.location.href=\'' + @{|/parties/list.html?lastName=${session.searchLastName}|} + '\''" />
+                            <input type="button" class="btn btn-success"   	th:value="#{action.add} + ' ' + #{contact.contact}"   th:onclick="'window.location.href=\'' + @{|${party.id}/contacts/new.html|} + '\''" />
                         </div>
                     </td>
                 </tr>
@@ -51,8 +52,6 @@
 
             <div class="starter-template" th:if="${not #lists.isEmpty(party.contacts)}">
                 <h2 th:text="#{contact.contacts}">#Contacts#</h2>
-
-                <a class="btn btn-sm btn-success pull-right" href="../pets/petForm.html" th:href="@{|${party.id}/pets/new.html|}">Add New Pet</a>
                 <br/><br/>
 
                 <table class="table">
@@ -74,7 +73,7 @@
                             </table>
                         </td>
                         <td>
-                            <a class="btn btn-sm btn-info pull-left" href="../pets/petForm.html" th:href="@{|/parties/${party.id}/pets/${contact.id}/edit|}" th:text="#{action.edit}">#Edit#</a>
+                            <a class="btn btn-sm btn-info pull-left" href="../contacts/petForm.html" th:href="@{|/parties/${party.id}/contacts/${contact.id}/edit|}" th:text="#{action.edit}">#Edit#</a>
                         </td>
                         <td>
                          </td>

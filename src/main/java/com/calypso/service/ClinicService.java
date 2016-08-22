@@ -20,6 +20,7 @@ import java.util.Collection;
 import org.springframework.dao.DataAccessException;
 
 import com.calypso.message.Message;
+import com.calypso.model.Contact;
 import com.calypso.model.Owner;
 import com.calypso.model.Party;
 import com.calypso.model.Pet;
@@ -64,5 +65,10 @@ public interface ClinicService {
     public void saveParty(Party party) throws DataAccessException;
     public Collection<Party> findParties() throws DataAccessException;
     public void deleteParty(Party party) throws DataAccessException;
+    
+    // Contact
+    public void saveContact(Contact contact) throws DataAccessException;
+	 public Contact findContactById(long contactId);
+    
 
 }

@@ -56,5 +56,9 @@ public class Contact extends BaseEntity {
 		return party;
 	}
 
+   protected void setParty(Party party) {
+      this.party = party;
+  }
+
 
 }

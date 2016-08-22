@@ -21,12 +21,12 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.data.repository.Repository;
 
 import com.calypso.model.Contact;
+import com.calypso.model.Owner;
 import com.calypso.model.Visit;
 
 public interface ContactRepository extends Repository<Contact, Long> {
 
     void save(Contact contact) throws DataAccessException;
-
-    List<Contact> findById(Long contactId);
+    Contact findById(Long contactId);
 
 }
