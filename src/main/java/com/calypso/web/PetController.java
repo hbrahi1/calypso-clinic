@@ -37,12 +37,8 @@ import com.calypso.model.Pet;
 import com.calypso.model.PetType;
 import com.calypso.service.ClinicService;
 
-/**
- * @author Juergen Hoeller
- * @author Ken Krebs
- * @author Arjen Poutsma
- * @author Arnaldo Piccinelli
- */
+
+@SuppressWarnings("javadoc")
 @Controller
 @SessionAttributes("pet")
 public class PetController {
