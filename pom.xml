@@ -22,7 +22,7 @@
     <properties>
         <start-class>com.calypso.CalypsoUiApplication</start-class>
 
-        <java.version>1.7</java.version>
+        <java.version>1.8</java.version>
 
         <!-- Web Flow -->
         <webflow-version>2.4.0.RELEASE</webflow-version>
